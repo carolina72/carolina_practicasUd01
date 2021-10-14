@@ -1,17 +1,58 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-page-header [titulo]="email || 'IMC'" ></app-page-header>
 
 <ion-content>
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Tab 1</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <form #formulario="ngForm">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Calcular el Indice de Masa Corporal (IMC):</ion-label>
+        <ion-button [disabled]="formulario.invalid" (click)="onClick()" >Calcular IMC</ion-button>
+      </ion-list-header>
+      <ion-item>
+        <ion-label>email</ion-label>
+        <ion-input name="email" type="text" placeholder="Introduce tu email"
+                    [(ngModel)]="email" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Peso (Kg)</ion-label>
+        <ion-input name="peso" type="number" placeholder="Introduce tu peso en Kg"[(ngModel)]="peso" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Altura (m)</ion-label>
+        <ion-input name="altura" type="number" placeholder="Introcude tu altura en metros" [(ngModel)]="altura" required></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>IMC: {{imc}}</ion-label>
+        <ion-badge *ngIf="imc>25" color="danger">Cuida tu peso</ion-badge>
+      </ion-item>
+    </ion-list>
+  </form>
+    
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+
+  <ion-button  expand="block">Boton expand block</ion-button>
+  <ion-button  expand="full">Boton expand full</ion-button>
+  <ion-button  fill="clear">Boton fill clear</ion-button>
+  <ion-button  fill="outline">Boton fill outline</ion-button>
+  <ion-button  fill="solid">Boton fill solid</ion-button>
+  <ion-button  fill="solid"size="small">Boton size small</ion-button>
+  <ion-button  fill="solid"size="default">Boton size default</ion-button>
+  <ion-button  fill="solid"size="large">Boton size large</ion-button>
+  <ion-button  shape="round">Boton shape round</ion-button>
+ 
+
+  <ion-button  fill="solid"size="default">
+    <ion-icon slot="start" name="star"></ion-icon>
+    icono a izquierda
+  </ion-button>
+
+  <ion-button  fill="solid"size="default">
+    <ion-icon slot="end" name="star"></ion-icon>
+    icono a derecha
+  </ion-button>
+
+  <ion-button  fill="solid"size="default">
+    <ion-icon slot="icon-only" name="star"></ion-icon>
+  </ion-button>
+
+  
 </ion-content>
